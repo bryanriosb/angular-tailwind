@@ -1,6 +1,15 @@
-<ng-container *ngFor="let transaction of transactions$ | async">
-  <p>{{ transaction.name }}</p>
-  <p>{{ transaction.amount }}</p>
-  <p>{{ transaction.date }}</p>
-</ng-container>
+<div *ngIf="transactions$ | async as transactions; else loading">
+  <ng-container *ngFor="let transaction of transactions">
+    <p>{{ transaction.name }}</p>
+    <p>{{ transaction.amount }}</p>
+    <p>{{ transaction.date }}</p>
+  </ng-container>
+</div>
+
+<ng-template #loading>
+  <img src="assets/images/grid.svg" width="40"  alt="">
+</ng-template>
+
+
+
 
