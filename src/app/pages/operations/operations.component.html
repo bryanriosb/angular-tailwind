@@ -1,9 +1,7 @@
-<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-  <h2 class="text-lg font-medium mr-auto">
-    Operaciones
-  </h2>
-</div>
-<div class="intro-y box p-5 mt-5 h-screen">
-  <app-transactions></app-transactions>
+<div class="grid grid-cols-2 gap-6">
+  <div class="sm:flex col-span-12">
+    <app-transactions [response]="response" (transaction)="getTransaction($event)"></app-transactions>
+    <app-transaction-detail [transaction]="transaction"  (response)="getDetailResponse($event)"></app-transaction-detail>
+  </div>
 </div>
 

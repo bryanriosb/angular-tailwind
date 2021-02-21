@@ -10,6 +10,7 @@ import { TransactionDetailComponent } from './transaction-detail.component';
   imports: [
     CommonModule,
     TransactionDetailRoutingModule
-  ]
+  ],
+  exports: [TransactionDetailComponent]
 })
 export class TransactionDetailModule { }

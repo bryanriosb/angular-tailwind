@@ -1,14 +1,36 @@
-<div *ngIf="transactions$ | async as transactions; else loading">
-  <ng-container *ngFor="let transaction of transactions">
-    <p>{{ transaction.name }}</p>
-    <p>{{ transaction.amount }}</p>
-    <p>{{ transaction.date }}</p>
-  </ng-container>
+<div class="md:p-5 md:col-span-4 xl:col-span-4 mt-5">
+  <div class="intro-y flex items-center h-10">
+      <h2 class="text-lg font-medium truncate mr-5">
+        Operaciones
+      </h2>
+  </div>
+  <div class="mt-5">
+    <ng-container *ngIf="transactions$ | async as transactions; else loading">
+      <div class="intro-x" *ngFor="let transaction of transactions">
+        <div class="box px-5 py-3 mb-3 flex items-center zoom-in" (click)="getTransInfo(transaction)">
+          <div class="w-10 h-10 flex-none image-fit rounded-full">
+            <img alt="Midone Tailwind HTML Admin Template" src="assets/images/profile-4.jpg">
+          </div>
+          <div class="ml-4 mr-auto">
+            <div class="font-medium">{{ transaction.name }}</div>
+            <div class="text-gray-600 text-xs">{{ transaction.date }}</div>
+          </div>
+          <div class="text-theme-9">+${{ transaction.amount }}</div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
 </div>
 
 <ng-template #loading>
-  <img src="assets/images/grid.svg" width="40"  alt="">
+  <div align=center>
+    <img src="assets/images/grid.svg" width="40"  alt="">
+  </div>
 </ng-template>
+
+
+
+
 
 
 

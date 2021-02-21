@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Transactions } from '../../shared/interfaces/transactions';
+import { DetailRespose } from '../../shared/interfaces/detail-response';
 
 
 @Component({
@@ -8,11 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OperationsComponent implements OnInit {
 
+  public response: DetailRespose | undefined
+  public transaction: Transactions | undefined
+  public color: string | undefined
+  public validated: boolean = false
 
   constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  getTransaction(transaction: Transactions): void {
+    this.transaction = transaction
+  }
+
+  getDetailResponse(state: DetailRespose): void {
+    console.log(state)
   }
 
 }

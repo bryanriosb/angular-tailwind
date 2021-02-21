@@ -1,1 +1,31 @@
-<p>transaction-detail works!</p>
+
+<div class="md:p-5 xl:col-span-8 mt-5">
+  <div class="intro-y block items-center h-10">
+      <h2 class="text-lg font-medium truncate mr-5">
+        Validación
+      </h2>
+  </div>
+  <div class="flex">
+    <ng-container *ngIf="transaction; else notData">
+      <div class="intro-y box p-5 mt-5 info-container">
+        <h2 class="font-medium text-base mr-auto">
+          {{ transaction.name }}
+        </h2>
+        <div class="mr-3">{{ transaction.date }}</div>
+        <div class="text-theme-9 font-medium">${{ transaction.amount }} USD</div>
+        <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
+            <div class="mr-3">Validar Transacción</div>
+            <input (change)="validation()" [checked]="validated" class="show-code input input--switch border" type="checkbox">
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #notData>
+  <p>Seleccione para confirmar la validación</p>
+</ng-template>
+
+
+
+

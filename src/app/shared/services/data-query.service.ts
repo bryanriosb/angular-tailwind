@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment.prod';
 })
 export class DataQueryService {
 
-  private URL: string = 'https://api.jsonbin.io/b/603200ee7c58305d3957ebf1'
+  private URL: string = 'https://api.jsonbin.io/b/603200ee7c58305d3957ebf1/4'
 
   constructor(private http: HttpClient) { }
 
