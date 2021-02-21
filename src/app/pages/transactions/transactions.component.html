@@ -1,0 +1,6 @@
+<ng-container *ngFor="let transaction of transactions$ | async">
+  <p>{{ transaction.name }}</p>
+  <p>{{ transaction.amount }}</p>
+  <p>{{ transaction.date }}</p>
+</ng-container>
+
