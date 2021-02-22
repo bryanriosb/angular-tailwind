@@ -11,21 +11,24 @@
         <h2 class="font-medium text-base mr-auto">
           {{ payload.transaction.name }}
         </h2>
+
         <div class="loading">
-          <img *ngIf="checking" src="assets/images/grid.svg" width="40"  alt="">
+          <img *ngIf="checking" src="assets/images/grid.svg" width="40"  alt="loading">
           <div *ngIf="payload.transaction.validated && !checking"
             class="py-1 px-2 rounded-full text-xs bg-theme-9 text-white cursor-pointer font-medium">
             <span>&#10003;</span> Validado
           </div>
         </div>
+
         <div class="mr-3">{{ payload.transaction.date }}</div>
         <div class="text-theme-9 font-medium">${{ payload.transaction.amount }} USD</div>
+
         <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
-            <div class="mr-3">Validar Transacción</div>
-            <input (change)="validation(payload.transaction)"
-                   [checked]="payload.transaction.validated"
-                   class="show-code input input--switch border"
-                   type="checkbox">
+          <div class="mr-3">Validar Transacción</div>
+          <input (change)="validation(payload.transaction)"
+                  [checked]="payload.transaction.validated"
+                  class="show-code input input--switch border"
+                  type="checkbox">
         </div>
       </div>
     </ng-container>

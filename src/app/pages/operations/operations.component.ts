@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TransactionObject, Transactions } from '../../shared/interfaces/transactions';
 
 
@@ -8,17 +8,13 @@ import { TransactionObject, Transactions } from '../../shared/interfaces/transac
   templateUrl: './operations.component.html',
   styleUrls: ['./operations.component.scss']
 })
-export class OperationsComponent implements OnInit {
+export class OperationsComponent {
 
   public response!: Transactions[]
   public transaction!: TransactionObject
   public validated: boolean = false
 
   constructor() { }
-
-  ngOnInit(): void {
-
-  }
 
   getTransaction(transaction: TransactionObject): void {
     this.transaction = transaction

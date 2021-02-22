@@ -8,10 +8,7 @@
     <ng-container *ngIf="transactions$ | async as transactions; else loading">
 
       <div #transState class="intro-x" *ngFor="let transaction of transactions" [ngClass]="{dark: transaction.validated}">
-        <div class="box px-5 py-3 mb-3 flex items-center zoom-in"
-             (click)="getTransInfo(transaction, transactions)"
-            >
-
+        <div class="box px-5 py-3 mb-3 flex items-center zoom-in" (click)="getTransInfo(transaction, transactions)">
           <div class="w-10 h-10 flex-none image-fit rounded-full">
             <img alt="Midone Tailwind HTML Admin Template" src="assets/images/profile-4.jpg">
           </div>
@@ -22,7 +19,6 @@
           <div class="py-1 px-2 rounded-full text-xs bg-theme-9 text-white cursor-pointer font-medium">
             +${{ transaction.amount }}
           </div>
-
         </div>
       </div>
 
@@ -32,7 +28,7 @@
 
 <ng-template #loading>
   <div align=center>
-    <img src="assets/images/grid.svg" width="40"  alt="">
+    <img src="assets/images/grid.svg" width="40"  alt="loading">
   </div>
 </ng-template>
 
