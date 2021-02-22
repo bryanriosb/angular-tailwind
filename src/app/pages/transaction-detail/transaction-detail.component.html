@@ -22,7 +22,10 @@
         <div class="text-theme-9 font-medium">${{ payload.transaction.amount }} USD</div>
         <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
             <div class="mr-3">Validar Transacción</div>
-            <input (change)="validation(payload.transaction)" [checked]="payload.transaction.validated" class="show-code input input--switch border" type="checkbox">
+            <input (change)="validation(payload.transaction)"
+                   [checked]="payload.transaction.validated"
+                   class="show-code input input--switch border"
+                   type="checkbox">
         </div>
       </div>
     </ng-container>

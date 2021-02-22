@@ -19,7 +19,7 @@ export class TransactionDetailComponent {
   validation(transaction: Transactions) {
     this.checking = true;
 
-    /* Actualizamo la validación */
+    /* Actualizamo el estado de la validación */
     transaction.validated = transaction.validated ? false: true
     this.payload.transactions.forEach((trans: Transactions) => {
       if (trans.id === transaction.id) trans.validated = transaction.validated

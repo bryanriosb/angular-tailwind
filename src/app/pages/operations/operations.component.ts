@@ -11,7 +11,7 @@ import { TransactionObject, Transactions } from '../../shared/interfaces/transac
 export class OperationsComponent implements OnInit {
 
   public response!: Transactions[]
-  public transaction: TransactionObject | undefined
+  public transaction!: TransactionObject
   public validated: boolean = false
 
   constructor() { }

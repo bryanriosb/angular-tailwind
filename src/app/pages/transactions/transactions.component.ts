@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Transactions, TransactionObject } from '../../shared/interfaces/transactions';
 import { Observable } from 'rxjs';
 import { Input, EventEmitter, } from '@angular/core';
@@ -10,7 +10,7 @@ import { RestService } from '../../shared/services/rest.service';
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
 })
-export class TransactionsComponent implements OnInit {
+export class TransactionsComponent implements OnInit, OnChanges {
 
   @Input() response!: Transactions[]
   @Output() transaction = new EventEmitter<TransactionObject>()
@@ -22,6 +22,17 @@ export class TransactionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.transactions$ = this.restService.getTransactions()
+  }
+
+  /*
+    Podríamos obtener el arreglo envíado desde el componente hijo
+    con los estados actualizado desde  el Input "response"
+  */
+  ngOnChanges(changes: SimpleChanges): void {
+    // let change = changes['response']
+    // if (!change.firstChange && change.currentValue) {
+    //   let response = change.currentValue;
+    // }
   }
 
   getTransInfo(transaction: Transactions, transactions: Transactions[]): void {
