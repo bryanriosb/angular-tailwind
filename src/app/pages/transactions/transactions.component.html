@@ -6,18 +6,26 @@
   </div>
   <div class="mt-5">
     <ng-container *ngIf="transactions$ | async as transactions; else loading">
-      <div class="intro-x" *ngFor="let transaction of transactions">
-        <div class="box px-5 py-3 mb-3 flex items-center zoom-in" (click)="getTransInfo(transaction)">
+
+      <div #transState class="intro-x" *ngFor="let transaction of transactions" [ngClass]="{dark: transaction.validated}">
+        <div class="box px-5 py-3 mb-3 flex items-center zoom-in"
+             (click)="getTransInfo(transaction, transactions)"
+            >
+
           <div class="w-10 h-10 flex-none image-fit rounded-full">
             <img alt="Midone Tailwind HTML Admin Template" src="assets/images/profile-4.jpg">
           </div>
           <div class="ml-4 mr-auto">
-            <div class="font-medium">{{ transaction.name }}</div>
+            <div class="font-medium text-gray-600">{{ transaction.name }}</div>
             <div class="text-gray-600 text-xs">{{ transaction.date }}</div>
           </div>
-          <div class="text-theme-9">+${{ transaction.amount }}</div>
+          <div class="py-1 px-2 rounded-full text-xs bg-theme-9 text-white cursor-pointer font-medium">
+            +${{ transaction.amount }}
+          </div>
+
         </div>
       </div>
+
     </ng-container>
   </div>
 </div>

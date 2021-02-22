@@ -1,52 +1,42 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChange, SimpleChanges, OnInit } from '@angular/core';
-import { Transactions } from '../../shared/interfaces/transactions';
-import { DetailRespose } from '../../shared/interfaces/detail-response';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Transactions, TransactionObject } from '../../shared/interfaces/transactions';
+import { RestService } from '../../shared/services/rest.service';
 
 @Component({
   selector: 'app-transaction-detail',
   templateUrl: './transaction-detail.component.html',
   styleUrls: ['./transaction-detail.component.scss']
 })
-export class TransactionDetailComponent implements OnChanges {
+export class TransactionDetailComponent {
 
-  @Input() transaction: Transactions | undefined
-  @Output() response = new EventEmitter<DetailRespose>()
+  @Input() payload!: TransactionObject
+  @Output() response = new EventEmitter<Transactions[]>()
 
-  public validated: boolean = false;
+  public checking: boolean = false
 
-  constructor() { }
+  constructor(private restService: RestService) { }
 
-  ngOnChanges(chages: SimpleChanges) {
-    let change = chages['transaction']
-    if (!change.firstChange && change.currentValue) {
-      console.log(change.currentValue)
+  validation(transaction: Transactions) {
+    this.checking = true;
 
-      // this.hiddenData()
-    }
+    /* Actualizamo la validación */
+    transaction.validated = transaction.validated ? false: true
+    this.payload.transactions.forEach((trans: Transactions) => {
+      if (trans.id === transaction.id) trans.validated = transaction.validated
+    })
+
+    /*
+      Dado que JSONbin no permite actualizar el objeto por el ID
+      se debe pasar todo el JSON
+    */
+    let subs$ = this.restService.putTransactions(this.payload.transactions)
+    .subscribe(request => {
+      subs$.unsubscribe()
+
+      let payload: Transactions[] = this.payload.transactions
+      request.success ? (this.response.emit(payload), this.checking = false):
+      alert('No se pudo confirmar la validación'), this.checking = false
+    })
   }
 
-  hiddenData() {
-    setTimeout(() => {
-      this.transaction = undefined
-    }, 10000);
-  }
-
-  validation() {
-    this.validated = this.validated === false ? true: false
-
-    let state: DetailRespose;
-    if (this.validated) {
-      state = {
-        color: 'black',
-        validated: true
-      }
-    } else {
-      state = {
-        color: undefined,
-        validated: false
-      }
-    }
-
-    this.response.emit(state)
-  }
 }

@@ -7,7 +7,7 @@ import { SidebarComponent } from './components/layout/sidebar/sidebar.component'
 import { MobileMenuComponent } from './components/layout/mobile-menu/mobile-menu.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { IconsModule } from './icons/icons.module';
-import { DataQueryService } from './services/data-query.service';
+import { RestService } from './services/rest.service';
 
 
 @NgModule({
@@ -30,7 +30,7 @@ import { DataQueryService } from './services/data-query.service';
     NotFoundComponent
   ],
   providers: [
-    DataQueryService
+    RestService
   ]
 })
 export class SharedModule { }

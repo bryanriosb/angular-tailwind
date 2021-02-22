@@ -1,9 +1,8 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { Transactions } from '../../shared/interfaces/transactions';
+import { Transactions, TransactionObject } from '../../shared/interfaces/transactions';
 import { Observable } from 'rxjs';
-import { DataQueryService } from '../../shared/services/data-query.service';
 import { Input, EventEmitter, } from '@angular/core';
-import { DetailRespose } from '../../shared/interfaces/detail-response';
+import { RestService } from '../../shared/services/rest.service';
 
 
 @Component({
@@ -13,19 +12,20 @@ import { DetailRespose } from '../../shared/interfaces/detail-response';
 })
 export class TransactionsComponent implements OnInit {
 
-  @Input() response: DetailRespose | undefined
-  @Output() transaction = new EventEmitter<Transactions>()
+  @Input() response!: Transactions[]
+  @Output() transaction = new EventEmitter<TransactionObject>()
 
   public transactions$: Observable<Transactions[]> | undefined
+  public validated: boolean = false
 
-  constructor(private dataQueryService: DataQueryService) { }
+  constructor(private restService: RestService) { }
 
   ngOnInit(): void {
-    this.transactions$ = this.dataQueryService.getTransactions()
+    this.transactions$ = this.restService.getTransactions()
   }
 
-  getTransInfo(transaction: Transactions): void {
-    this.transaction.emit(transaction)
+  getTransInfo(transaction: Transactions, transactions: Transactions[]): void {
+    let payload: TransactionObject = { transaction, transactions }
+    this.transaction.emit(payload)
   }
-
 }

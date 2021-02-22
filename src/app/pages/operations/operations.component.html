@@ -1,7 +1,7 @@
 <div class="grid grid-cols-2 gap-6">
   <div class="sm:flex col-span-12">
     <app-transactions [response]="response" (transaction)="getTransaction($event)"></app-transactions>
-    <app-transaction-detail [transaction]="transaction"  (response)="getDetailResponse($event)"></app-transaction-detail>
+    <app-transaction-detail [payload]="transaction"  (response)="getDetailResponse($event)"></app-transaction-detail>
   </div>
 </div>
 
