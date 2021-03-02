@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { TransactionObject, Transactions } from '../../shared/interfaces/transactions';
-
-
+import { Transactions, TransactionObject } from '../../shared/interfaces/transactions';
 
 @Component({
   selector: 'app-operations',

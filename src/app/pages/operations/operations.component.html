@@ -1,7 +1,9 @@
-<div class="grid grid-cols-2 gap-6">
-  <div class="sm:flex col-span-12">
+<div class="grid grid-cols-12 gap-6">
+  <div class="col-span-12 md:col-span-6">
     <app-transactions [response]="response" (transaction)="getTransaction($event)"></app-transactions>
-    <app-transaction-detail [payload]="transaction"  (response)="getDetailResponse($event)"></app-transaction-detail>
+  </div>
+  <div class="col-span-12 md:col-span-6">
+    <app-transactions-details [payload]="transaction"  (response)="getDetailResponse($event)"></app-transactions-details>
   </div>
 </div>
 

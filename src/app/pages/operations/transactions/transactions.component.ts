@@ -1,8 +1,10 @@
 import { Component, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Transactions, TransactionObject } from '../../shared/interfaces/transactions';
+
 import { Observable } from 'rxjs';
 import { Input, EventEmitter, } from '@angular/core';
-import { RestService } from '../../shared/services/rest.service';
+import { Transactions, TransactionObject } from 'src/app/shared/interfaces/transactions';
+import { RestService } from 'src/app/shared/services/rest.service';
+
 
 
 @Component({

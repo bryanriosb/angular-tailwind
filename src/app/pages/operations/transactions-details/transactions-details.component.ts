@@ -1,13 +1,14 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Transactions, TransactionObject } from '../../shared/interfaces/transactions';
-import { RestService } from '../../shared/services/rest.service';
+import { Transactions, TransactionObject } from '../../../shared/interfaces/transactions';
+import { RestService } from '../../..//shared/services/rest.service';
 
 @Component({
-  selector: 'app-transaction-detail',
-  templateUrl: './transaction-detail.component.html',
-  styleUrls: ['./transaction-detail.component.scss']
+  selector: 'app-transactions-details',
+  templateUrl: './transactions-details.component.html',
+  styleUrls: ['./transactions-details.component.scss']
 })
-export class TransactionDetailComponent {
+
+export class TransactionsDetailsComponent {
 
   @Input() payload!: TransactionObject
   @Output() response = new EventEmitter<Transactions[]>()
